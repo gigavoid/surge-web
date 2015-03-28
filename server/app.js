@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/thumb/:name', function (req, res) {
-    var path = __dirname + '/thumbs/' + req.params.name + '.jpg';
+    var path = __dirname + '/thumbs/' + req.params.name.replace(/\W/g, '').toLowerCase() + '.jpg';
 
     isFile(path, function (file) {
         if (file) {
