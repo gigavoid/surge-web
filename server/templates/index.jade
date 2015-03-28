@@ -11,7 +11,7 @@ html
                 each stream in streams
                     .listitem
                         a(href='/' + stream.name)
-                            img.listimg(src='/static/imgs/gvsurgedefault.png')
+                            img.listimg(src='/thumb/' + stream.name)
                         a(href='/' + stream.name)
                             h3=stream.name + ' (' + stream.viewers + ')'
                         //p.viewers=details.viewers

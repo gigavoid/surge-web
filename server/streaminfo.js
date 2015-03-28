@@ -1,8 +1,17 @@
 var xml2js = require('xml2js'),
-    request = require('request');
+    request = require('request'),
+    fs = require('fs'),
+    exec = require('child_process').exec;
 
 var streamList = [];
 var streamsByName = {};
+var lastThumb = 0;
+
+try {
+    fs.mkdirSync(__dirname + '/thumbs');
+} catch(e) {
+    if ( e.code != 'EEXIST' ) throw e;
+}
 
 module.exports = {
     update: function() {
@@ -63,6 +72,26 @@ module.exports = {
             });
 
         });
+    },
+
+    genThumbs: function () {
+        lastThumb++;
+        if (lastThumb >= streamList.length) {
+            lastThumb = 0;
+        }
+
+        if (streamList.length > 0) {
+            var stream = streamList[lastThumb];
+            console.log('Generating thumbnail for stream #' + lastThumb + '(' + stream.name + ')');
+
+            var slug = stream.name.replace(/\W/g, '');
+
+            var command = 'ffmpeg -i rtmp://surge.gigavoid.com:1935/live/' + slug + ' -vframes 1 -y ' + __dirname +  '/thumbs/' + slug.toLowerCase() + '.jpg';
+            exec(command, function (err) {
+                if (err)
+                    console.log('Could not generate thumbnail: ' + err);
+            });
+        }
     },
 
     getStream: function (name) {
