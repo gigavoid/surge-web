@@ -8,31 +8,9 @@ html
         .background
             .wrapper
                 h1 SURGE
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item1
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item2
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item3
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item4
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item5
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item6
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item7
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item8
-                .listitem
-                    img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                    p Item9
+                each details, stream in streams
+                    .listitem
+                        img(src='/static/imgs/gvsurgedefault.png' class='listimg')
+                        h3=stream
+                        //p.viewers=details.viewers
         script(src='/static/app.js')
