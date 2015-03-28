@@ -37,7 +37,7 @@ if (document.querySelector('#player')) {
         }
         let img = imgs[n];
         img.element.src = img.defaultSrc + '?t=' + (+new Date());
-    }, 2000);
+    }, 30000);
 
 
     let viewerLabels = document.querySelectorAll('.viewers');
