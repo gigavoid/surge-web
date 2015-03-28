@@ -1,4 +1,5 @@
 var express = require('express');
+var streaminfo = require('./streaminfo');
 var app = express();
 
 app.use('/static', express.static(__dirname + '/../out/static'));
@@ -7,7 +8,7 @@ app.set('view engine', 'jade');
 
 
 app.get('/', function (req, res) {
-    res.render('index', { title: 'Hey', message: 'Hello there!'});
+    res.render('index', { streams: streaminfo.streams()});
 });
 
 var server = app.listen(3000, function () {
@@ -18,3 +19,6 @@ var server = app.listen(3000, function () {
     console.log('Example app listening at http://%s:%s', host, port);
 
 });
+
+streaminfo.update();
+setInterval(streaminfo.update, 3000);

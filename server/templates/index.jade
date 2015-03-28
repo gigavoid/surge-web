@@ -4,4 +4,8 @@ html
         link(rel='stylesheet', href='/static/app.css')
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans')
     body
+        each details, stream in streams
+            h2=stream
+            p.viewers=details.viewers
+            p.uptime=details.uptime
         script(src='/static/app.js')
