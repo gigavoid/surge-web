@@ -14,9 +14,16 @@ app.get('/', function (req, res) {
 app.get('/:name', function (req, res) {
     var name = req.params.name;
 
-    res.render('stream', {
-        stream: streaminfo.getStream(name)
-    });
+    var stream = streaminfo.getStream(name);
+    if (stream) {
+        res.render('stream', {
+            stream: stream
+        });
+    }
+    else {
+        res.status(404);
+        res.render('404');
+    }
 });
 
 var server = app.listen(process.env.PORT || 3000, function () {
