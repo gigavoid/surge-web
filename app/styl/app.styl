@@ -1,2 +1,46 @@
+itemwidth = 1280 / 3
+aspectratio = 9 / 16
+
+html
+  font-family "Open Sans"
+  color #f0f8ff
+
 body
   background black
+
+h1
+  font-size 6em
+  text-align center
+  font-weight normal
+
+.bgimg
+  background-image url("/static/imgs/gvsurgebg.png")
+  margin-left -500px
+  height 500px
+  width 1000px
+  z-index -1
+  position absolute
+  left 50%
+  top 50px
+
+.background
+  background-color rgba(0, 0, 0, 0.85)
+  width 100%
+  min-height 600px
+
+.wrapper
+  width 1280px
+  height auto
+  margin auto
+  margin-top 20px
+
+.listitem
+  text-align center
+  width (itemwidth)px
+  height auto
+  display inline-block
+
+.listimg
+  width (itemwidth - 40)px
+  height (itemwidth * aspectratio - 40 * aspectratio)px
+  border 1px solid #183a64
