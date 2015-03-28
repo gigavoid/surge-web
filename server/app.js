@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
     res.render('index', { streams: streaminfo.getStreams()});
 });
 
-app.get('/thumb/:name', function (req, res) {
+app.get('/:name/thumb', function (req, res) {
     var path = __dirname + '/thumbs/' + req.params.name.replace(/\W/g, '').toLowerCase() + '.jpg';
 
     isFile(path, function (file) {
@@ -28,6 +28,18 @@ app.get('/thumb/:name', function (req, res) {
             res.redirect('/static/imgs/gvsurgedefault.png');
         }
     });
+});
+
+app.get('/:name/viewers', function (req,res ) {
+    var stream = streaminfo.getStream(req.params.name);
+    if (stream) {
+        res.send({
+            viewers: stream.viewers
+        })
+    }
+    else {
+        res.sendStatus(404);
+    }
 });
 
 app.get('/:name', function (req, res) {

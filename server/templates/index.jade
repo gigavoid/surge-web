@@ -11,8 +11,10 @@ html
                 each stream in streams
                     .listitem
                         a(href='/' + stream.name)
-                            img.listimg(src='/thumb/' + stream.name)
+                            img.listimg(src=stream.name + '/thumb')
                         a(href='/' + stream.name)
-                            h3=stream.name + ' (' + stream.viewers + ')'
+                            h3=stream.name + ' ('
+                                span.viewers(streamer=stream.name)=stream.viewers
+                                | )
                         //p.viewers=details.viewers
         script(src='/static/app.js')
