@@ -1,0 +1,13 @@
+html
+    head
+        title='Surge - ' + name
+        link(rel='stylesheet', href='/static/app.css')
+        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans')
+    body
+        .wrapper
+            #player.stream(streamer=name)
+            a(href='/' style='float: right;')
+                h2 SURGE
+            h2=name
+        script(src='http://jwpsrv.com/library/SV1SatTmEeSTUgp+lcGdIw.js')
+        script(src='/static/app.js')

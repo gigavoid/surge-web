@@ -10,7 +10,9 @@ html
                 h1 SURGE
                 each details, stream in streams
                     .listitem
-                        img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                        h3=stream
+                        a(href='/' + stream)
+                            img(src='/static/imgs/gvsurgedefault.png' class='listimg')
+                        a(href='/' + stream)
+                            h3=stream
                         //p.viewers=details.viewers
         script(src='/static/app.js')

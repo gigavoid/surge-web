@@ -11,6 +11,10 @@ app.get('/', function (req, res) {
     res.render('index', { streams: streaminfo.streams()});
 });
 
+app.get('/:name', function (req, res) {
+    res.render('stream', { name: req.params.name});
+});
+
 var server = app.listen(3000, function () {
 
     var host = server.address().address;
