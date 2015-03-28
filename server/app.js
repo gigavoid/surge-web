@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:name', function (req, res) {
-    res.render('stream', { name: req.params.name});
+    res.render('stream', { name: req.params.name, details: streaminfo.streams()[req.params.name]});
 });
 
 var server = app.listen(3000, function () {
