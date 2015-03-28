@@ -19,6 +19,11 @@ module.exports = {
 
                 var streams = result.rtmp.server[0].application[0].live[0].stream;
 
+                if (!streams) {
+                    // No streams online
+                    return;
+                }
+
                 var newList = {};
 
                 for (var i = 0; i < streams.length; i++) {
