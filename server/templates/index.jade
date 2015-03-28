@@ -4,8 +4,13 @@ html
         link(rel='stylesheet', href='/static/app.css')
         link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans')
     body
-        each details, stream in streams
-            h2=stream
-            p.viewers=details.viewers
-            p.uptime=details.uptime
+        .bgimg
+        .background
+            .wrapper
+                h1 SURGE
+                each details, stream in streams
+                    .listitem
+                        img(src='/static/imgs/gvsurgedefault.png' class='listimg')
+                        h3=stream
+                        //p.viewers=details.viewers
         script(src='/static/app.js')
