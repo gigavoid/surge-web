@@ -8,11 +8,11 @@ html
         .background
             .wrapper
                 h1 SURGE
-                each details, stream in streams
+                each stream in streams
                     .listitem
-                        a(href='/' + stream)
+                        a(href='/' + stream.name)
                             img(src='/static/imgs/gvsurgedefault.png' class='listimg')
-                        a(href='/' + stream)
-                            h3=stream + ' (' + details.viewers + ')'
+                        a(href='/' + stream.name)
+                            h3=stream.name + ' (' + stream.viewers + ')'
                         //p.viewers=details.viewers
         script(src='/static/app.js')

@@ -8,11 +8,15 @@ app.set('view engine', 'jade');
 
 
 app.get('/', function (req, res) {
-    res.render('index', { streams: streaminfo.streams()});
+    res.render('index', { streams: streaminfo.getStreams()});
 });
 
 app.get('/:name', function (req, res) {
-    res.render('stream', { name: req.params.name, details: streaminfo.streams()[req.params.name]});
+    var name = req.params.name;
+
+    res.render('stream', {
+        stream: streaminfo.getStream(name)
+    });
 });
 
 var server = app.listen(3000, function () {

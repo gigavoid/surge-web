@@ -1,7 +1,8 @@
 var xml2js = require('xml2js'),
     request = require('request');
 
-var streamList = {};
+var streamList = [];
+var streamsByName = {};
 
 module.exports = {
     update: function() {
@@ -20,11 +21,12 @@ module.exports = {
                 var streams = result.rtmp.server[0].application[0].live[0].stream;
 
                 if (!streams) {
-                    // No streams online
+                    // No getStreams online
                     return;
                 }
 
-                var newList = {};
+                var newList = [];
+                var newObj = {};
 
                 for (var i = 0; i < streams.length; i++) {
                     var stream = streams[i];
@@ -43,19 +45,31 @@ module.exports = {
                     }
 
                     if (onePublisher) {
-                        newList[name] = {
-                            viewers: viewers
-                        }
+                        var streamObj = {
+                            viewers: viewers,
+                            name: name
+                        };
+                        newList.push(streamObj);
+                        newObj[name] = streamObj;
                     }
                 }
 
+                newList.sort(function (a, b) {
+                    return  b.viewers - a.viewers;
+                });
+
                 streamList = newList;
+                streamsByName = newObj;
             });
 
         });
     },
 
-    streams: function() {
+    getStream: function (name) {
+        return streamsByName[name];
+    },
+
+    getStreams: function () {
         return streamList;
     }
 };
