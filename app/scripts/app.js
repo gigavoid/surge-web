@@ -8,7 +8,8 @@ if (document.querySelector('#player')) {
         file: 'rtmp://home.gigavoid.com:1935/live/' + name,
         image: '/static/imgs/gvsurgedefault.png',
         width: '100%',
-        aspectratio: '16:9'
+        aspectratio: '16:9',
+        autostart: true
     });
 
     setInterval(function() {
