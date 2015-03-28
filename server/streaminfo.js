@@ -27,12 +27,25 @@ module.exports = {
                 var newList = {};
 
                 for (var i = 0; i < streams.length; i++) {
-                    var name = streams[i].name[0];
-                    var viewers = streams[i].client.length - 1;
+                    var stream = streams[i];
+                    var name = stream.name[0];
+                    var viewers = stream.client.length - 1;
 
+                    var onePublisher = false;
 
-                    newList[name] = {
-                        viewers: viewers
+                    for (var j = 0; j < stream.client.length; j++) {
+                        var client = stream.client[j];
+                        var publishing = client.publishing !== undefined;
+
+                        if (publishing) {
+                            onePublisher = true;
+                        }
+                    }
+
+                    if (onePublisher) {
+                        newList[name] = {
+                            viewers: viewers
+                        }
                     }
                 }
 
