@@ -13,9 +13,11 @@ try {
     if ( e.code != 'EEXIST' ) throw e;
 }
 
+var statsUrl = process.env.STAT_URL || 'http://localhost:1936/stat';
+
 module.exports = {
     update: function() {
-        request('http://surge.gigavoid.com:1936/stat', function (err, resp) {
+        request(statsUrl, function (err, resp) {
             if (err) {
                 console.error('Could not update streamstats');
                 return;
