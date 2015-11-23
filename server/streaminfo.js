@@ -19,7 +19,8 @@ module.exports = {
     update: function() {
         request(statsUrl, function (err, resp) {
             if (err) {
-                console.error('Could not update streamstats');
+                console.log('Stats url: ' + statsUrl);
+                console.error('Could not update streamstats', err);
                 return;
             }
 
