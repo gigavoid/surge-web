@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     babelify = require('babelify'),
     watchify = require('watchify'),
     uglify = require('gulp-uglify'),
-        browserify = require('browserify');
+    browserify = require('browserify');
 
     var watching = false;
 
